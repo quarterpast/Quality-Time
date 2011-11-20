@@ -1,0 +1,53 @@
+{{$.extend("base");}}
+{{$.set("title","New task");}}
+<form id="new" action="{{=$.route('tasks.create','POST')}}" method="POST">
+<p class="incomplete">
+<label for="what">I have to</label>
+<input name="what" id="what" type="text" placeholder="do things" />
+</p>
+<p class="incomplete">
+<label for="time">It will take</label>
+<input name="time" id="time" type="number" placeholder="5" min="1" maxwidth="3" />
+<select name="unit" id="unit">
+  <option value="60" label="minutes">minutes</option>
+  <option value="3600" label="hours">hours</option>
+</select>
+</p>
+<p class="incomplete">
+<label for="standalone">It&#8217;s</label>
+<select name="standalone" id="standalone">
+  <option value="1" label="on its own">on its own</option>
+  <option value="0" label="part of">part of</option>
+</select>
+<select name="project" id="project">
+  <option value="-1" label="new project">new project</option>
+</select>
+<input type="text" name="newproject" id="newproject" placeholder="new project" />
+</p>
+<p class="incomplete">
+<label for="depends">First, I need to</label>
+<select name="depends[]" class="depends">
+  <option value="-1" label="do nothing">do nothing</option>
+  {{
+  var c = 1;
+  for each(let task in this.tasks) {
+    out += <option value={c++} label={task.what}>{task.what}</option>.toXMLString();
+  }
+  }}
+</select>
+<input type="button" id="and" value="+"/>
+</p>
+<p class="incomplete">
+<label for="importance">It&#8217;s</label>
+<select name="importance" id="importance">
+  <option value="0" label="not">not</option>
+  <option value="1" label="kinda">kinda</option>
+  <option value="2" label="quite">quite</option>
+  <option value="3" label="very">very</option>
+  <option value="4" label="extremely">extremely</option>
+</select>
+<label for="importance">important</label>
+</p>
+<hr/>
+<input type="submit" value="Okay"/>
+</form>
