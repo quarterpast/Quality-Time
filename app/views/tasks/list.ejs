@@ -1,2 +1,10 @@
 {{$.extend("base");}}
-List
+<ul>
+{{
+for each(let task in this.tasks) {
+}}
+<li>{{=task.what}}</li>
+{{
+}
+}}
+</ul>

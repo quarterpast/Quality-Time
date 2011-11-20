@@ -23,6 +23,7 @@ exports.tasks = mvc.controller({
 		this.list();
 	},
 	"list": function() {
-		this.render();
+		var tasks = models.task.fetch(mvc.yes);
+		this.render({tasks:tasks});
 	}
 });
