@@ -22,6 +22,13 @@ exports.tasks = mvc.controller({
 		task.save();
 		this.list();
 	},
+	"view": function(p) {
+		if("id" in p) {
+
+		} else {
+			this.list();
+		}
+	},
 	"list": function() {
 		var tasks = models.task.fetch(mvc.yes);
 		this.render({tasks:tasks});
