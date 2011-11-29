@@ -1,7 +1,8 @@
-const mvc = require("mvc.js").init(module.id),
-      models = mvc.models(module.id);
+const model = require("mvc/model.js").create.bind(module.id),
+      models = require("mvc/list.js").models(module.id);
 
-exports.task = mvc.model({
+
+exports.task = model({
 	what:       {type:String},
 	time:       {type:Number},
 	complete:   {type:java.lang.Boolean},

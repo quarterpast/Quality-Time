@@ -1,7 +1,7 @@
-const mvc = require("mvc.js").init(module.id),
-      models = mvc.models(module.id);
+const model = require("mvc/model.js").create.bind(module.id),
+      models = require("mvc/list.js").models(module.id);
 
-exports.project = mvc.model({
+exports.project = model({
 	name:       {type:String},
-	tasks:      {type:Array,elements:mvc.models.task}
+	tasks:      {type:Array,elements:models.task}
 });

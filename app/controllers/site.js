@@ -1,6 +1,6 @@
-const mvc = require("mvc.js").init(module.id),
+const controller = require("mvc/controller.js").create.bind(module.id),
       models = mvc.models(module.id);
-exports.site = mvc.controller({
+exports.site = controller({
 	"index": function() {
 		this.render();
 	},

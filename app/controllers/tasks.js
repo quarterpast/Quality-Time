@@ -1,6 +1,6 @@
-const mvc = require("mvc.js").init(module.id),
-      models = mvc.models(module.id);
-exports.tasks = mvc.controller({
+const controller = require("mvc/controller.js").create.bind(module.id),
+      models = require("mvc/list.js").models(module.id);
+exports.tasks = controller({
 	"new": function() {
 		var tasks = models.task.fetch(mvc.yes),
 		    projects = models.project.fetch(mvc.yes);
