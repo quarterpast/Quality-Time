@@ -1,7 +1,8 @@
-const model = require("mvc/model.js").create.bind(module.id),
-      models = require("mvc/list.js").models(module.id);
+const model = require("mvc/model.js"),
+      models = require("mvc/list.js").models;
 
-exports.project = model({
-	name:       {type:String},
-	tasks:      {type:Array,elements:models.task}
+module.exports = model.define("project",{
+	name:       String
 });
+
+module.exports.hasMany(models.task,{as:"tasks",foreignKey:"task_id"});

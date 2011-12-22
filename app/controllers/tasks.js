@@ -1,9 +1,11 @@
-const controller = require("mvc/controller.js").create.bind(module.id),
-      models = require("mvc/list.js").models(module.id);
-exports.tasks = controller({
+const controller = require("mvc/controller.js").bind(module.id);
+models = require("mvc/list.js").models
+
+
+module.exports = controller({
 	"new": function() {
-		var tasks = models.task.fetch(mvc.yes),
-		    projects = models.project.fetch(mvc.yes);
+		var tasks = models.task.all(),
+		    projects = models.project.all();
 		this.render({tasks:tasks,projects:projects});
 	},
 	"create": function(p) {

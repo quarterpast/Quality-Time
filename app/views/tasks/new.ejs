@@ -30,9 +30,9 @@
   <option value="-1" label="do nothing">do nothing</option>
   {{
   var c = 1;
-  for each(let task in this.tasks) {
+  tasks.each(function(task) {
     out += <option value={c++} label={task.what}>{task.what}</option>.toXMLString();
-  }
+  })
   }}
 </select>
 <input type="button" id="and" value="+"/>

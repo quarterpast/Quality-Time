@@ -8,26 +8,13 @@
 	"buffers":
 	[
 		{
-			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/buffer.js",
-			"settings":
-			{
-				"buffer_size": 237,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/model.js",
-			"settings":
-			{
-				"buffer_size": 1656,
-				"line_ending": "Unix"
-			}
-		},
-		{
+			"contents": "const url = require(\"url\"),\nstatic = require(\"static.js\");\nmodule.exports = function(req,route) {\n	var params = {}, keys = [], uri = url.parse(req.url,true), action;\n	if(route[0] === \"*\" || route[0] == req.method) {\n		var reg = new RegExp(\"^\"+route[1].replace(/\\{([\\w]+?)\\}/g,function(m,key){\n			keys.push(key)\n			return \"([\\\\w0-9\\.\\-]+)\";\n		})+\"$\");\n		if(reg.test(uri)) {\n			uri.replace(reg,function(m){\n				Array.slice(arguments,1,keys.length+1).forEach(function(v,k){\n					params[keys[k]] = v;\n				})\n			});\n			var action = route[2].runInNewContext()\n			if([static.file,static.dir].some(route[2])) {\n				action = route[2].bind(null,route[3]);\n			} else if(meta.isAction(route[2])) {\n				action = route[2];\n			} else if(typeof route[2] === \"string\") {\n\n			} else {\n				action = route[2](params);\n			}\n			return true;\n		}\n	}\n	return false;\n};",
 			"file": "/home/matt/Documents/Code/Javascript/Struct/router.js",
+			"file_size": 801,
+			"file_write_time": 1324502136000000,
 			"settings":
 			{
-				"buffer_size": 2033,
+				"buffer_size": 843,
 				"line_ending": "Unix"
 			}
 		},
@@ -40,10 +27,10 @@
 			}
 		},
 		{
-			"file": "/home/matt/Documents/Code/Javascript/Struct/tmpl.js",
+			"file": "test.js",
 			"settings":
 			{
-				"buffer_size": 3426,
+				"buffer_size": 115,
 				"line_ending": "Unix"
 			}
 		},
@@ -51,7 +38,31 @@
 			"file": "/home/matt/Documents/Code/Javascript/Struct/struct",
 			"settings":
 			{
-				"buffer_size": 104,
+				"buffer_size": 102,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/model.js",
+			"settings":
+			{
+				"buffer_size": 132,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/renderer.js",
+			"settings":
+			{
+				"buffer_size": 788,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/tasks.js",
+			"settings":
+			{
+				"buffer_size": 870,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,23 +70,15 @@
 			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/list.js",
 			"settings":
 			{
-				"buffer_size": 800,
+				"buffer_size": 809,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/matt/Documents/Code/Javascript/Struct/struct.js",
+			"file": "app/controllers/site.js",
 			"settings":
 			{
-				"buffer_size": 748,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/controller.js",
-			"settings":
-			{
-				"buffer_size": 1816,
+				"buffer_size": 183,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +86,71 @@
 			"file": "/home/matt/Documents/Code/Javascript/Struct/server.js",
 			"settings":
 			{
-				"buffer_size": 709,
+				"buffer_size": 1560,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/project.js",
+			"settings":
+			{
+				"buffer_size": 250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/main.js",
+			"settings":
+			{
+				"buffer_size": 713,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/controller.js",
+			"settings":
+			{
+				"buffer_size": 1401,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "conf/routes.js",
+			"settings":
+			{
+				"buffer_size": 876,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "conf/routes.conf",
+			"settings":
+			{
+				"buffer_size": 624,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/template.js",
+			"settings":
+			{
+				"buffer_size": 2264,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/task.js",
+			"settings":
+			{
+				"buffer_size": 312,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/matt/Documents/Code/Javascript/Struct/node_modules/jugglingdb/lib/abstract-class.js",
+			"settings":
+			{
+				"buffer_size": 17710,
 				"line_ending": "Unix"
 			}
 		}
@@ -91,19 +158,19 @@
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"command_palette":
 	{
-		"height": 138.0,
+		"height": 306.0,
 		"selected_items":
 		[
+			[
+				"w",
+				"Word Wrap: Toggle"
+			],
 			[
 				"close",
 				"Project: Close"
 			],
 			[
 				"wo",
-				"Word Wrap: Toggle"
-			],
-			[
-				"w",
 				"Word Wrap: Toggle"
 			],
 			[
@@ -144,17 +211,25 @@
 	},
 	"file_history":
 	[
+		"/home/matt/Documents/Code/Javascript/Struct/tmpl.js",
+		"/usr/share/skype-wrapper/helpers.py",
+		"/home/matt/Documents/Code/Javascript/Struct/mvc/model.js",
+		"/home/matt/Documents/Code/Javascript/Struct/config.js",
+		"/home/matt/Documents/Code/Javascript/Struct/mvc/buffer.js",
+		"/home/matt/Documents/Code/Javascript/Event/main.js",
+		"/home/matt/Documents/Code/Javascript/Event/mill.js",
+		"/home/matt/Documents/Code/Javascript/Struct/staticroute.js",
+		"/home/matt/Documents/Code/Javascript/Struct/struct.js",
+		"/home/matt/Documents/Code/Javascript/Struct/router.js",
+		"/home/matt/Documents/Code/Web/Time/conf/routes.js",
 		"/home/matt/Documents/Code/Web/Time/app/models/task.js",
 		"/home/matt/Documents/Code/Web/Time/app/models/project.js",
 		"/home/matt/Documents/Code/Web/Time/app/controllers/tasks.js",
 		"/home/matt/Documents/Code/Web/Time/app/controllers/site.js",
-		"/home/matt/Documents/Code/Javascript/Struct/staticroute.js",
 		"/home/matt/Documents/Code/Javascript/Struct/template.js",
 		"/home/matt/Documents/Code/Javascript/Struct/mvc/list.js",
 		"/home/matt/Documents/Code/Javascript/Struct/server.js",
 		"/home/matt/Documents/Send/nohup.out",
-		"/home/matt/Documents/Code/Javascript/Struct/struct.js",
-		"/home/matt/Documents/Code/Javascript/Struct/config.js",
 		"/home/matt/Documents/Societies/PhotoSoc/rob.pdf (Case Conflict 2)",
 		"/home/matt/Documents/Code/Web/Time/app/views/tasks/list.ejs",
 		"/home/matt/Documents/Code/Web/Time/app/views/base.ejs",
@@ -162,7 +237,6 @@
 		"/home/matt/Documents/Code/Web/Time/css/style.less",
 		"/home/matt/Documents/Code/Javascript/Struct/README.md",
 		"/home/matt/Documents/Code/Web/Time/app/views/error.ejs",
-		"/home/matt/Documents/Code/Web/Time/conf/routes.js",
 		"/home/matt/Documents/Code/Web/Time/app/views/tasks/new.ejs",
 		"/home/matt/Documents/Work/Year 3/Scientific Programming/Project2/test.c",
 		"/home/matt/.icons/Faience/index.theme",
@@ -264,14 +338,7 @@
 		"/home/matt/Documents/Code/Phi/app/views/base.ejs",
 		"/home/matt/Documents/Code/Phi/Makefile",
 		"/home/matt/Documents/Code/Phi/app/views/site/index.ejs",
-		"/home/matt/Documents/Code/TestApp/app/controllers/posts.js",
-		"/home/matt/Documents/Code/TestApp/app/controllers/comments.js",
-		"/home/matt/Documents/Code/Phi/app/models/exec.js",
-		"/home/matt/Documents/Code/Struct/mvc.js",
-		"/home/matt/Documents/Code/TestApp/app/models/post.js",
-		"/home/matt/Documents/Code/Struct/extend.js",
-		"/home/matt/Documents/Code/Struct/router.js",
-		"/home/matt/Documents/Code/Phi/conf/routes.js"
+		"/home/matt/Documents/Code/TestApp/app/controllers/posts.js"
 	],
 	"find":
 	{
@@ -290,6 +357,19 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"_scopeMeta",
+			"list",
+			" \\$.([\\w.]+?)\\]$",
+			"\"([\\s\\S]+?)\"],$",
+			"^\\s+\\[\"(\\*|GET|POST)\",\"([\\s\\S]+?)\",([\\s\\S]+?),",
+			"^\\s+\\[\"",
+			"config.appMode",
+			"return false",
+			"let",
+			" continue",
+			"continue",
+			"config.appDir",
+			"this.staticFile",
 			"(g|s)etB(uffer|ytes)",
 			"mvc",
 			"mvc.js",
@@ -404,8 +484,7 @@
 			"command",
 			"\": \"show_overlay\", \"args\": {\"overlay\": \"goto\", \"text\": \"#\"} },\n\n	{ \"keys\": [\"ctrl+i\"], \"command\": \"show_pa",
 			"    ",
-			"scroll",
-			"pane"
+			"scroll"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -413,6 +492,12 @@
 		"regex": true,
 		"replace_history":
 		[
+			"$1",
+			"\\t$1",
+			"$1\\t$2\\t$3",
+			" return false",
+			"return false",
+			"static.file",
 			"b$2.$1et",
 			"@link",
 			"\\t",
@@ -439,51 +524,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/buffer.js",
+					"file": "/home/matt/Documents/Code/Javascript/Struct/router.js",
 					"settings":
 					{
-						"buffer_size": 237,
+						"buffer_size": 843,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								237,
-								237
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/model.js",
-					"settings":
-					{
-						"buffer_size": 1656,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								75,
-								75
+								552,
+								552
 							]
 						],
 						"settings":
@@ -498,35 +555,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/router.js",
-					"settings":
-					{
-						"buffer_size": 2033,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								347,
-								347
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "/home/matt/Documents/Code/Javascript/Struct/extend.js",
 					"settings":
 					{
@@ -554,26 +583,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/tmpl.js",
+					"buffer": 2,
+					"file": "test.js",
 					"settings":
 					{
-						"buffer_size": 3426,
+						"buffer_size": 115,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								81,
+								81
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -582,19 +609,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "/home/matt/Documents/Code/Javascript/Struct/struct",
 					"settings":
 					{
-						"buffer_size": 104,
+						"buffer_size": 102,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								73,
-								73
+								35,
+								79
 							]
 						],
 						"settings":
@@ -608,57 +635,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/list.js",
+					"buffer": 4,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/model.js",
 					"settings":
 					{
-						"buffer_size": 800,
+						"buffer_size": 132,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								800,
-								800
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 7,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/struct.js",
-					"settings":
-					{
-						"buffer_size": 748,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								748,
-								748
+								104,
+								104
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -668,39 +662,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/controller.js",
+					"buffer": 5,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/renderer.js",
 					"settings":
 					{
-						"buffer_size": 1816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1213,
-								1213
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/home/matt/Documents/Code/Javascript/Struct/server.js",
-					"settings":
-					{
-						"buffer_size": 709,
+						"buffer_size": 788,
 						"regions":
 						{
 						},
@@ -718,6 +684,343 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/controllers/tasks.js",
+					"settings":
+					{
+						"buffer_size": 870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								870,
+								106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/list.js",
+					"settings":
+					{
+						"buffer_size": 809,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								165,
+								165
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/controllers/site.js",
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/server.js",
+					"settings":
+					{
+						"buffer_size": 1560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								663,
+								285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 10,
+					"file": "app/models/project.js",
+					"settings":
+					{
+						"buffer_size": 250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/main.js",
+					"settings":
+					{
+						"buffer_size": 713,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								687,
+								687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/mvc/controller.js",
+					"settings":
+					{
+						"buffer_size": 1401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 12.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "conf/routes.js",
+					"settings":
+					{
+						"buffer_size": 876,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								869,
+								108
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "conf/routes.conf",
+					"settings":
+					{
+						"buffer_size": 624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								551,
+								551
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/template.js",
+					"settings":
+					{
+						"buffer_size": 2264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							],
+							[
+								77,
+								77
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/models/task.js",
+					"settings":
+					{
+						"buffer_size": 312,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								116,
+								116
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "/home/matt/Documents/Code/Javascript/Struct/node_modules/jugglingdb/lib/abstract-class.js",
+					"settings":
+					{
+						"buffer_size": 17710,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12928,
+								12928
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4928.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
