@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Quality Time {{=$.exists("title").and("&#149; "+$.get("title"))}}</title>
+  <title>Quality Time {{=$.exists("title") || "&#149; "+$.get("title")}}</title>
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -27,7 +27,7 @@
   </form>
 </header>
 <section role="main">
-{{=$.layout()}}
+{{=$.layout}}
 </section>
 <footer>
 </footer>

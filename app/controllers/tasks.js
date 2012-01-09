@@ -1,8 +1,8 @@
 const controller = require("mvc/controller.js").bind(module.id);
-models = require("mvc/list.js").models
+models = require("mvc/list.js").models;
 
 
-module.exports = controller({
+module.exports = {
 	"new": function() {
 		var tasks = models.task.all(),
 		    projects = models.project.all();
@@ -13,12 +13,12 @@ module.exports = controller({
 		var task = models.task.create(p), proj;
 		if(p.standalone == 0) {
 			if(p.project == -1) {
-				proj = models.project.create({name:p.newproject,tasks:[task]})
+				proj = models.project.create({name:p.newproject,tasks:[task]});
 			} else {
 				proj = models.project.byId(p.project);
 				proj.tasks.push(task);
 			}
-			print(typeof proj.save)
+			print(typeof proj.save);
 			proj.save();
 		}
 		task.save();
@@ -32,7 +32,7 @@ module.exports = controller({
 		}
 	},
 	"list": function() {
-		var tasks = models.task.fetch(mvc.yes);
+		var tasks = models.task.all();
 		this.render({tasks:tasks});
 	}
-});
+};

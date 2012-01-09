@@ -31,8 +31,8 @@
   {{
   var c = 1;
   tasks.each(function(task) {
-    out += <option value={c++} label={task.what}>{task.what}</option>.toXMLString();
-  })
+    out += '<option value="'+(c++)+'" label="'+task.what+'">"'+task.what+'"</option>';
+  });
   }}
 </select>
 <input type="button" id="and" value="+"/>
